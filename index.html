@@ -3,455 +3,406 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Kora Outbound</title>
-<meta name="description" content="Strategia cold outbound per Kora Comunicazione: posizionamento, ICP, offerta, macchina per 10 meeting al mese.">
+<title>Kora · Cold Outbound</title>
+<meta name="description" content="Kora Comunicazione: la rotta del cold outbound. ICP, offerta, macchina per 10 meeting al mese.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap">
 <style>
-:root{
-  --bg:#F3F4F0;--bg2:#E9EBE4;--ink:#141F1A;--muted:#5D6862;--rule:#CFD5CE;
-  --green:#1F5A44;--green-ink:#F3F4F0;--brass:#A87B2E;--brass-soft:#F0E4CB;
-  --card:#FFFFFF;--shadow:0 1px 0 rgba(20,31,26,.06),0 12px 32px -18px rgba(20,31,26,.25);
-}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#0F1512;--bg2:#161D19;--ink:#E8EAE4;--muted:#98A29B;--rule:#2A332E;
-  --green:#7FC8A5;--green-ink:#0F1512;--brass:#D9B36A;--brass-soft:#2B2416;
-  --card:#171F1B;--shadow:0 1px 0 rgba(0,0,0,.4),0 12px 32px -18px rgba(0,0,0,.6);
-}}
-:root[data-theme="dark"]{
-  --bg:#0F1512;--bg2:#161D19;--ink:#E8EAE4;--muted:#98A29B;--rule:#2A332E;
-  --green:#7FC8A5;--green-ink:#0F1512;--brass:#D9B36A;--brass-soft:#2B2416;
-  --card:#171F1B;--shadow:0 1px 0 rgba(0,0,0,.4),0 12px 32px -18px rgba(0,0,0,.6);
-}
+:root{--k:#8AC63E;--ink:#191F23;--w:#FFFFFF;--g:#6B7075;--line:#E4E6E3;--soft:#F4F6F1}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:Manrope,system-ui,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
-h1,h2,h3,.serif{font-family:Newsreader,Georgia,serif;font-weight:500;letter-spacing:-.01em;text-wrap:balance;line-height:1.08}
-h1{font-size:clamp(2.6rem,7vw,5.4rem);margin:0}
-h2{font-size:clamp(2rem,4.5vw,3.4rem);margin:0 0 1.2rem}
-h3{font-size:1.5rem;margin:0 0 .5rem}
-em{font-style:italic;color:var(--green)}
-p{margin:0 0 1rem;max-width:62ch}
-.mono{font-family:"JetBrains Mono",ui-monospace,monospace;font-variant-numeric:tabular-nums}
-.eyebrow{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:flex;gap:.8rem;align-items:center;margin-bottom:1.4rem}
-.eyebrow::before{content:"";width:28px;height:1px;background:var(--brass)}
-.wrap{max-width:1120px;margin:0 auto;padding-inline:20px}
-section{padding-block:clamp(4rem,9vw,7.5rem);border-top:1px solid var(--rule)}
-section:first-of-type{border-top:0}
-
-/* progress + nav */
-#bar{position:fixed;left:0;top:0;height:3px;width:0;background:var(--brass);z-index:10;transition:width .1s linear}
-nav.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
-nav.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:56px}
-nav.top .brand{font-family:Newsreader,serif;font-size:1.25rem;font-weight:500;text-decoration:none;color:var(--ink)}
-nav.top .brand span{color:var(--brass)}
-nav.top ul{display:flex;gap:1.2rem;list-style:none;margin:0;padding:0;overflow-x:auto;scrollbar-width:none;font-size:.8rem;font-weight:600}
-nav.top ul::-webkit-scrollbar{display:none}
-nav.top a{color:var(--muted);text-decoration:none;white-space:nowrap}
-nav.top a:hover,nav.top a:focus-visible{color:var(--ink);outline:none}
-
-/* hero */
-.hero{padding-block:clamp(4rem,10vw,9rem) clamp(3rem,7vw,6rem)}
-.hero .grid{display:grid;grid-template-columns:1.4fr 1fr;gap:3rem;align-items:end}
-.hero p.lede{font-size:1.25rem;color:var(--muted);margin-top:1.6rem}
-.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule)}
-.tile{background:var(--card);padding:1.2rem 1.1rem}
-.tile b{display:block;font-family:Newsreader,serif;font-weight:500;font-size:2.2rem;line-height:1;margin-bottom:.4rem}
-.tile small{color:var(--muted);font-size:.8rem;line-height:1.3;display:block}
-.hero .source{font-size:.75rem;color:var(--muted);margin-top:.8rem}
-
-/* diagnosis */
-.two{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
-.list{list-style:none;padding:0;margin:0;display:grid;gap:1rem}
-.list li{padding-left:1.4rem;position:relative;max-width:60ch}
-.list li::before{content:"";position:absolute;left:0;top:.65em;width:8px;height:8px;background:var(--brass);transform:rotate(45deg)}
-.callout{background:var(--green);color:var(--green-ink);padding:2rem;font-family:Newsreader,serif;font-size:1.5rem;line-height:1.25;align-self:start}
-.callout small{display:block;font-family:Manrope,sans-serif;font-size:.8rem;opacity:.75;margin-top:1rem;letter-spacing:.05em;text-transform:uppercase}
-
-/* positioning split */
-.split{display:grid;grid-template-columns:7fr 2fr 1fr;gap:1rem;margin-top:2rem}
-.seg{padding:1.4rem 1.2rem;border:1px solid var(--rule);background:var(--card);min-height:220px;display:flex;flex-direction:column;justify-content:space-between}
-.seg.main{background:var(--green);color:var(--green-ink);border-color:var(--green)}
-.seg .pct{font-family:Newsreader,serif;font-size:2.6rem;line-height:1}
-.seg h3{font-size:1.15rem;margin-top:1rem}
-.seg p{font-size:.92rem;margin:0;opacity:.9}
-.seg.main p{opacity:.85}
-.quote{font-family:Newsreader,serif;font-style:italic;font-size:clamp(1.4rem,3vw,2.1rem);line-height:1.25;border-left:3px solid var(--brass);padding-left:1.4rem;margin:2.5rem 0 0;max-width:30ch}
-
-/* ICP table */
-.tblwrap{overflow-x:auto;border:1px solid var(--rule);background:var(--card);margin-top:1.5rem}
-table{border-collapse:collapse;width:100%;min-width:760px;font-size:.9rem}
-th,td{text-align:left;vertical-align:top;padding:.8rem .9rem;border-bottom:1px solid var(--rule)}
-th{font-family:"JetBrains Mono",monospace;font-weight:500;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:var(--bg2)}
-tr:last-child td{border-bottom:0}
-td .ticket{font-family:"JetBrains Mono",monospace;color:var(--green);font-weight:500;white-space:nowrap}
-.filtro{margin-top:1.5rem;display:grid;grid-template-columns:auto 1fr;gap:1.2rem;align-items:start;padding:1.4rem;background:var(--brass-soft);border-left:3px solid var(--brass)}
-.filtro b{font-family:Newsreader,serif;font-size:1.3rem;font-weight:500;white-space:nowrap}
-.filtro p{margin:0;font-size:.95rem}
-
-/* offer */
-.offer{display:grid;grid-template-columns:1.1fr .9fr;gap:2.5rem;margin-top:2rem}
-.stack{border:1px solid var(--rule);background:var(--card);box-shadow:var(--shadow)}
-.stack header{padding:1.3rem 1.4rem;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
-.stack header h3{margin:0;font-size:1.6rem}
-.stack header .badge{font-family:"JetBrains Mono",monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--brass);white-space:nowrap}
-.stack ol{list-style:none;margin:0;padding:0;counter-reset:s}
-.stack li{padding:.9rem 1.4rem;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:2rem 1fr;gap:.6rem;font-size:.95rem;counter-increment:s}
-.stack li::before{content:counter(s,decimal-leading-zero);font-family:"JetBrains Mono",monospace;color:var(--muted);font-size:.8rem;padding-top:.15rem}
-.stack li.bonus{background:var(--brass-soft)}
-.stack li.bonus::before{content:"+";color:var(--brass);font-weight:700}
-.stack footer{padding:1.2rem 1.4rem;font-size:.9rem;color:var(--muted)}
-.levers{display:grid;gap:1rem}
-.lever{padding:1.2rem 1.3rem;border:1px solid var(--rule);background:var(--card)}
-.lever .k{font-family:"JetBrains Mono",monospace;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--brass);margin-bottom:.4rem}
-.lever p{margin:0;font-size:.95rem}
-.hook{margin-top:2rem;padding:1.6rem 1.8rem;background:var(--green);color:var(--green-ink);font-family:Newsreader,serif;font-size:1.35rem;line-height:1.3;max-width:none}
-.hook small{display:block;font-family:"JetBrains Mono",monospace;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;opacity:.7;margin-bottom:.6rem}
-.eq{font-family:Newsreader,serif;font-size:1.3rem;margin:.5rem 0 1.5rem;color:var(--muted)}
-.eq b{color:var(--ink);font-weight:500}
-
-/* funnel chart */
-.chart{margin-top:2rem;display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start}
-.bars{display:grid;gap:.9rem}
-.bar{display:grid;grid-template-columns:150px 1fr 3rem;gap:.8rem;align-items:center;font-size:.9rem}
-.bar .track{height:28px;background:var(--bg2);position:relative;overflow:hidden}
-.bar .fill{position:absolute;inset:0 auto 0 0;background:var(--green)}
-.bar .fill.alt{background:var(--brass)}
-.bar .n{font-family:"JetBrains Mono",monospace;font-weight:500;text-align:right}
-.bar .lbl{color:var(--muted)}
-.total{margin-top:1.2rem;padding-top:1rem;border-top:1px solid var(--rule);display:flex;justify-content:space-between;font-family:"JetBrains Mono",monospace;font-size:.85rem}
-.total b{font-family:Newsreader,serif;font-size:2rem;font-weight:500;line-height:1}
-.infra{display:grid;gap:.8rem}
-.infra div{display:grid;grid-template-columns:auto 1fr;gap:1rem;padding:.9rem 0;border-bottom:1px solid var(--rule);font-size:.92rem}
-.infra div span:first-child{font-family:"JetBrains Mono",monospace;color:var(--green);white-space:nowrap;min-width:6.5rem}
-.warn{margin-top:2rem;padding:1.3rem 1.5rem;border:1px solid var(--brass);background:var(--brass-soft);font-size:.95rem}
-.warn b{font-family:Newsreader,serif;font-size:1.2rem;font-weight:500;display:block;margin-bottom:.3rem}
-
-/* triggers */
-.trig{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:2rem}
-.trig div{background:var(--card);padding:1.2rem}
-.trig b{display:block;font-family:Newsreader,serif;font-size:1.2rem;font-weight:500;margin-bottom:.4rem}
-.trig p{font-size:.88rem;margin:0;color:var(--muted)}
-.trig .f{font-family:"JetBrains Mono",monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--brass);margin-top:.7rem;display:block}
-
-/* emails */
-.mails{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem}
-.mail{background:var(--card);border:1px solid var(--rule);box-shadow:var(--shadow)}
-.mail .hd{padding:.9rem 1.2rem;border-bottom:1px solid var(--rule);display:grid;gap:.2rem;font-family:"JetBrains Mono",monospace;font-size:.78rem;color:var(--muted)}
-.mail .hd b{color:var(--ink);font-weight:500}
-.mail .bd{padding:1.2rem;font-size:.95rem;white-space:pre-line;line-height:1.5}
-.rules{margin-top:2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;font-size:.9rem}
-.rules div{padding:1rem;border-top:2px solid var(--green)}
-.rules b{display:block;margin-bottom:.2rem}
-
-/* referral */
-.ref{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem;margin-top:2rem}
-.ref div{padding:1.3rem;border:1px solid var(--rule);background:var(--card)}
-.ref b{font-family:Newsreader,serif;font-size:1.25rem;font-weight:500;display:block;margin-bottom:.5rem}
-.ref p{font-size:.9rem;margin:0}
-.ref p+p{margin-top:.5rem;color:var(--green)}
-.script{margin-top:2rem;padding:1.6rem 1.8rem;background:var(--card);border-left:3px solid var(--brass);font-family:Newsreader,serif;font-style:italic;font-size:1.2rem;line-height:1.35;max-width:none}
-
-/* timeline */
-.tl{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:2rem}
-.tl div{background:var(--card);padding:1.3rem 1.2rem}
-.tl .w{font-family:"JetBrains Mono",monospace;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--brass)}
-.tl b{display:block;font-family:Newsreader,serif;font-size:1.3rem;font-weight:500;margin:.4rem 0 .8rem}
-.tl ul{margin:0;padding-left:1rem;font-size:.88rem;color:var(--muted)}
-.tl li{margin-bottom:.3rem}
-.kpi{margin-top:2rem;display:flex;flex-wrap:wrap;gap:.6rem}
-.kpi span{font-family:"JetBrains Mono",monospace;font-size:.78rem;padding:.4rem .7rem;border:1px solid var(--rule);background:var(--card)}
-
-/* closing */
-.no{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
-.no ol{margin:0;padding-left:1.2rem;display:grid;gap:.7rem;font-size:.95rem}
-footer.end{padding-block:3rem;border-top:1px solid var(--rule);color:var(--muted);font-size:.8rem}
-footer.end .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
-
-@media (max-width:820px){
-  .hero .grid,.two,.offer,.chart,.mails,.no{grid-template-columns:1fr}
-  .split{grid-template-columns:1fr}
-  .seg{min-height:0}
-  .tl{grid-template-columns:1fr 1fr}
-  .tiles{grid-template-columns:1fr 1fr 1fr}
-  .bar{grid-template-columns:110px 1fr 3rem}
-  .filtro{grid-template-columns:1fr}
-}
-@media (max-width:480px){.tiles{grid-template-columns:1fr}.tl{grid-template-columns:1fr}}
+html,body{height:100%}
+body{margin:0;font-family:"DM Sans",system-ui,sans-serif;color:var(--ink);background:var(--w);font-size:clamp(16px,1.35vw,20px);line-height:1.4}
+#deck{height:100%;overflow-y:auto;scroll-snap-type:y mandatory;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){#deck{scroll-behavior:auto}}
+.s{min-height:100%;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:center;padding:clamp(56px,8vh,90px) clamp(20px,7vw,110px);position:relative;background:var(--w)}
+.s.dark{background:var(--ink);color:var(--w)}
+.s.dark .g{color:var(--k)}
+.s.green{background:var(--k);color:var(--ink)}
+.n{position:absolute;top:clamp(18px,3vh,28px);left:clamp(20px,7vw,110px);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--g)}
+.s.dark .n{color:rgba(255,255,255,.5)}
+.s.green .n{color:rgba(25,31,35,.6)}
+h1,h2{text-transform:uppercase;font-weight:700;letter-spacing:-.01em;line-height:.98;margin:0 0 .5em;text-wrap:balance}
+h1{font-size:clamp(2.6rem,8vw,7rem)}
+h2{font-size:clamp(1.9rem,5vw,4rem)}
+h2 .g{color:var(--k)}
+h3{text-transform:uppercase;font-size:.8rem;letter-spacing:.16em;margin:0 0 .5rem;color:var(--k);font-weight:700}
+p{margin:0;max-width:34ch}
+.lead{font-size:clamp(1.1rem,2vw,1.6rem);font-weight:400;max-width:26ch}
+.big{font-size:clamp(1.4rem,3vw,2.6rem);font-weight:500;line-height:1.2;max-width:24ch}
+ul{list-style:none;margin:0;padding:0}
+li{padding:.55em 0;border-top:1px solid var(--line);max-width:40ch}
+.s.dark li{border-color:rgba(255,255,255,.15)}
+li b{color:var(--k);font-weight:700}
+.s.green li{border-color:rgba(25,31,35,.2)}
+.s.green li b{color:var(--ink)}
+.cols{display:grid;grid-template-columns:repeat(var(--c,3),1fr);gap:clamp(1rem,3vw,3rem);margin-top:1.5rem}
+.cols>div>p{max-width:none;font-size:.95em}
+.num{font-size:clamp(3rem,9vw,7.5rem);font-weight:700;line-height:.9;letter-spacing:-.03em;color:var(--k)}
+.s.dark .num{color:var(--k)}
+.stat{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:2rem}
+.stat small{display:block;margin-top:.5rem;color:var(--g);max-width:18ch}
+.s.dark .stat small{color:rgba(255,255,255,.6)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,3vw,3rem);margin-top:1.5rem}
+.qa{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem 2rem;margin-top:1.5rem}
+.qa div{border-top:2px solid var(--k);padding-top:.7rem}
+.qa b{display:block;text-transform:uppercase;font-size:.72rem;letter-spacing:.14em;color:var(--g);margin-bottom:.3rem}
+.qa p{font-size:.95em;max-width:none}
+.bars{display:grid;gap:.9rem;margin-top:1.5rem;max-width:640px}
+.bar{display:grid;grid-template-columns:9rem 1fr 3rem;gap:1rem;align-items:center;font-size:.9em}
+.track{height:22px;background:var(--soft)}
+.s.dark .track{background:rgba(255,255,255,.1)}
+.fill{height:100%;background:var(--k)}
+.bar span:last-child{text-align:right;font-weight:700}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:1.5rem}
+.steps div{border-top:2px solid var(--k);padding-top:.7rem}
+.steps b{display:block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--g);margin-bottom:.3rem}
+.steps p{font-size:.92em;max-width:none}
+.chips{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.5rem;max-width:760px}
+.chips span{border:1.5px solid var(--ink);padding:.45rem .9rem;font-weight:500;font-size:.9em}
+.s.dark .chips span{border-color:var(--k);color:var(--w)}
+.mail{background:var(--soft);padding:1.5rem 1.8rem;max-width:560px;font-size:.92em;white-space:pre-line;line-height:1.45;margin-top:1rem;border-left:4px solid var(--k)}
+.mail b{display:block;margin-bottom:.8rem;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--g)}
+.quote{font-size:clamp(1.3rem,2.8vw,2.3rem);font-weight:500;line-height:1.2;max-width:28ch;border-left:5px solid var(--k);padding-left:1.2rem}
+.logo{height:clamp(26px,3.2vw,40px);width:auto}
+.s.dark .logo{filter:invert(1)}
+.foot{position:absolute;bottom:clamp(18px,3vh,28px);left:clamp(20px,7vw,110px);right:clamp(20px,7vw,110px);display:flex;justify-content:space-between;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--g)}
+.s.dark .foot{color:rgba(255,255,255,.5)}
+#pb{position:fixed;top:0;left:0;height:4px;background:var(--k);width:0;z-index:5}
+#ctr{position:fixed;right:clamp(20px,7vw,110px);bottom:clamp(18px,3vh,28px);font-size:.7rem;letter-spacing:.14em;color:var(--g);z-index:5;mix-blend-mode:difference;color:#fff}
+.hint{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--g);z-index:5}
+@media (max-width:820px){.cols,.qa,.steps,.grid2{grid-template-columns:1fr 1fr}.stat{grid-template-columns:1fr}.bar{grid-template-columns:6.5rem 1fr 2.5rem}}
+@media (max-width:520px){.cols,.qa,.steps,.grid2{grid-template-columns:1fr}.s{justify-content:flex-start;padding-top:70px}.hint{display:none}}
 </style>
 </head>
 <body>
-<div id="bar"></div>
-<nav class="top"><div class="wrap">
-  <a class="brand" href="#top">Kora <span>/</span> Outbound</a>
+<div id="pb"></div>
+<div id="ctr"></div>
+<div class="hint">↓ o → per avanzare</div>
+<div id="deck">
+
+<section class="s dark">
+  <img class="logo" src="kora-logo.png" alt="Kora Comunicazione">
+  <h1 style="margin-top:2rem">Cold outbound.<br><span class="g">La rotta.</span></h1>
+  <p class="lead">Dieci meeting al mese con chi può comprare davvero. Chi cerchiamo, cosa offriamo, come li raggiungiamo.</p>
+  <div class="foot"><span>Strategia v1</span><span>Settembre 2026</span></div>
+</section>
+
+<section class="s">
+  <div class="n">Punto di partenza</div>
+  <h2>Da dove <span class="g">partiamo</span></h2>
+  <div class="stat">
+    <div><div class="num">606k</div><small>ricavi 2024, tutti a progetto</small></div>
+    <div><div class="num">7</div><small>case study pubblici, sei manifattura, una utility</small></div>
+    <div><div class="num">0</div><small>offerte sul sito. Solo servizi.</small></div>
+  </div>
+  <p class="lead" style="margin-top:2rem">Nessuno prende un meeting con "un'agenzia creativa". Lo prende per un problema con una scadenza.</p>
+</section>
+
+<section class="s">
+  <div class="n">Cosa vendiamo</div>
+  <h2>Una punta,<br>due lati</h2>
+  <div class="cols">
+    <div><div class="num">70%</div><h3>Reporting istituzionale</h3><p>Bilanci, bilancio sociale, relazione d'impatto. Obbligatorio, annuale, scadenza fissa. Nessuna agenzia lo vende come prodotto.</p></div>
+    <div><div class="num" style="color:var(--ink)">20%</div><h3>Manifattura su trigger</h3><p>Il core di sempre. Solo quando c'è un segnale: fiera, anniversario, nuova sede.</p></div>
+    <div><div class="num" style="color:var(--ink)">10%</div><h3>Vino</h3><p>A 10 km da casa. Prima si crea la referenza, poi si scrive.</p></div>
+  </div>
+</section>
+
+<section class="s dark">
+  <div class="n">ICP · 1 di 4</div>
+  <h2>Chi <span class="g">cerchiamo</span></h2>
   <ul>
-    <li><a href="#diagnosi">Diagnosi</a></li>
-    <li><a href="#posizionamento">Posizionamento</a></li>
-    <li><a href="#icp">ICP</a></li>
-    <li><a href="#offerta">Offerta</a></li>
-    <li><a href="#macchina">10 meeting</a></li>
-    <li><a href="#trigger">Trigger</a></li>
-    <li><a href="#email">Email</a></li>
-    <li><a href="#referral">Referral</a></li>
-    <li><a href="#piano">90 giorni</a></li>
+    <li><b>Utility e multiutility</b> · 12 gestori Viveracqua + 40-60 enti · 25-50k/anno</li>
+    <li><b>BCC e Casse Rurali</b> · 15-18 istituti VE+FVG · 15-35k/anno</li>
+    <li><b>Società Benefit</b> · 400-600 in Veneto e Friuli · 8-15k/anno</li>
+    <li><b>Manifattura 5-50M</b> · fiera, agenti, export, un marketing manager al massimo · 30-80k</li>
+    <li><b>Cantine 5-30M</b> · marchio proprio, Vinitaly, ospitalità · 20-60k</li>
   </ul>
-</div></nav>
+</section>
 
-<section class="hero" id="top"><div class="wrap">
-  <div class="grid">
-    <div>
-      <div class="eyebrow">Strategia cold outbound · Kora Comunicazione SB · Vittorio Veneto</div>
-      <h1>Bilanci che si leggono, <em>stand che si ricordano.</em></h1>
-      <p class="lede">Come un'agenzia da 606k a progetto costruisce una base ricorrente e arriva a dieci meeting qualificati al mese, partendo da sette case study e da un obbligo di legge che nessuno presidia.</p>
-    </div>
-    <div>
-      <div class="tiles">
-        <div class="tile"><b class="mono">606k</b><small>ricavi 2024, tutti a progetto</small></div>
-        <div class="tile"><b class="mono">6–9</b><small>persone in team</small></div>
-        <div class="tile"><b class="mono">7</b><small>clienti pubblici: 6 manifattura, 1 utility</small></div>
-        <div class="tile"><b class="mono">0</b><small>clienti vino a 10 km dal Prosecco DOCG</small></div>
-        <div class="tile"><b class="mono">3</b><small>cose che sanno fare e le altre otto agenzie no</small></div>
-        <div class="tile"><b class="mono">10</b><small>meeting al mese, obiettivo dal terzo mese</small></div>
-      </div>
-      <div class="source">Dati: visura pubblica P.IVA 04982030266, sito koracomunicazione.com. Il resto è analisi, 18 settembre 2026.</div>
-    </div>
+<section class="s">
+  <div class="n">ICP · 2 di 4</div>
+  <h2>Le domande <span class="g">giuste</span></h2>
+  <div class="qa">
+    <div><b>Chi firma</b><p>DG o Presidente nelle utility e BCC. Titolare o CFO nelle SB e in manifattura.</p></div>
+    <div><b>Chi decide</b><p>Responsabile comunicazione, marketing manager, la seconda generazione appena entrata.</p></div>
+    <div><b>Quando compra</b><p>Reporting: ottobre-novembre per la stagione febbraio-aprile. Fiera: 5-6 mesi prima.</p></div>
+    <div><b>Quanto spende</b><p>Reporting 8-50k ricorrente. Fiera 30-80k. Vino 20-60k.</p></div>
+    <div><b>Che dolore ha</b><p>Il documento lo fa il commercialista e nessuno lo apre. Lo stand costa e nessuno si ferma.</p></div>
+    <div><b>Come decide</b><p>Un referente, un CdA. Vuole vedere un esempio simile a sé, non un portfolio.</p></div>
+    <div><b>Dove lo trovo</b><p>Elenchi pubblici: soci Viveracqua, albo BCC, Registro Imprese, cataloghi fiera, albo Consorzi.</p></div>
+    <div><b>Cosa lo convince</b><p>Il confronto. Il suo documento accanto a quello del concorrente a 15 km.</p></div>
   </div>
-</div></section>
+</section>
 
-<section id="diagnosi"><div class="wrap">
-  <div class="eyebrow">01 · Diagnosi</div>
-  <h2>Sette clienti, un mestiere vero, nessuna offerta.</h2>
-  <div class="two">
-    <ul class="list">
-      <li>Sei clienti su sette sono manifattura B2B del distretto (Cardin, Holler, Enex, Silko, Tegola Canadese, Tema). Uno è una utility (acquevenete). Zero vino, zero banche visibili, zero Società Benefit clienti.</li>
-      <li>Fatturato a progetto. Con progetti da 30-80k bastano 8-12 chiusure l'anno: la pipeline vive di 2-3 firme a trimestre. Un trimestre vuoto pesa.</li>
-      <li>Il sito vende "comunicazione integrata" con quattro valori astratti. Nessuna offerta, nessun prezzo, nessuna promessa verificabile. Stesso posizionamento delle altre otto agenzie della zona.</li>
-      <li>Tre cose che sanno fare davvero: reporting istituzionale progettato (acquevenete), allestimento esperienziale e contenuti interattivi (Enex), branding per manifattura che va in fiera con showroom (Cardin, Silko).</li>
+<section class="s">
+  <div class="n">ICP · 3 di 4</div>
+  <h2>Il filtro <span class="g">d'oro</span></h2>
+  <p class="big">Scarichiamo il bilancio dell'anno scorso. Copertina, prima pagina di numeri, indice.</p>
+  <p class="lead" style="margin-top:1.5rem">Word impaginato o Excel incollato: lead caldo. Mai pubblicato nulla: fuori dal cold.</p>
+  <p style="margin-top:1.5rem;color:var(--g)">Cinque minuti per azienda. Vale più di qualsiasi filtro automatico.</p>
+</section>
+
+<section class="s">
+  <div class="n">ICP · 4 di 4</div>
+  <h2>Chi <span class="g">no</span></h2>
+  <div class="chips">
+    <span>sotto 2M di fatturato</span><span>e-commerce e D2C</span><span>gare al ribasso</span><span>"solo il logo"</span><span>"solo i social"</span><span>startup</span>
+  </div>
+  <p class="lead" style="margin-top:2rem">Un no in dieci secondi. Rimando cortese, chiusura.</p>
+</section>
+
+<section class="s green">
+  <div class="n">Differenziante</div>
+  <h2>Un obbligo<br>diventa un asset</h2>
+  <div class="cols">
+    <div><h3 style="color:var(--ink)">Prova 1</h3><p>acquevenete: bilancio e rendicontazione di sostenibilità.</p></div>
+    <div><h3 style="color:var(--ink)">Prova 2</h3><p>La nostra relazione d'impatto. Vendiamo quello che facciamo su di noi.</p></div>
+    <div><h3 style="color:var(--ink)">Prova 3</h3><p>Enex, Cardin, Silko: showroom e stand che si ricordano.</p></div>
+  </div>
+</section>
+
+<section class="s">
+  <div class="n">L'angolo</div>
+  <h2>Mostriamo<br>il <span class="g">confronto</span></h2>
+  <ul>
+    <li><b>Reporting</b> · il vostro bilancio accanto a quello di acquevenete. Pagina 1.</li>
+    <li><b>Fiera</b> · foto del vostro stand accanto a quello di Cardin. Stessa metratura.</li>
+    <li><b>Vino</b> · la vostra sala degustazione oggi e come diventa. Concept prima dei soldi.</li>
+  </ul>
+</section>
+
+<section class="s dark">
+  <div class="n">Offerta</div>
+  <h2>Bilancio<br>che si <span class="g">legge</span></h2>
+  <div class="grid2">
+    <ul>
+      <li>Progettazione e impaginato completo</li>
+      <li>Sintesi 4 pagine per soci e stampa</li>
+      <li>Versione web navigabile</li>
+      <li>Kit assemblea: slide, sala, roll-up</li>
+      <li><b>Bonus</b> · audit del documento precedente</li>
+      <li><b>Bonus</b> · mappatura VSME o legge 208/2015</li>
     </ul>
-    <div class="callout">Nessuno prende un meeting con "un'agenzia creativa". Si prende un meeting per un problema con una scadenza.<small>Il principio di tutto quello che segue</small></div>
-  </div>
-</div></section>
-
-<section id="posizionamento"><div class="wrap">
-  <div class="eyebrow">02 · Posizionamento</div>
-  <h2>Una punta e due lati.</h2>
-  <p>Con sette case study non si spingono tre messaggi in parallelo con la stessa forza. Il 70% dello sforzo va su una cosa sola: quella obbligatoria, ricorrente, con scadenza fissa, che nessuna agenzia creativa veneta vende come prodotto.</p>
-  <div class="split">
-    <div class="seg main">
-      <div><div class="pct">70%</div><h3>Reporting istituzionale e d'impatto</h3></div>
-      <p>Bilancio d'esercizio, bilancio sociale, rendicontazione di sostenibilità, relazione d'impatto. Obbligatorio per Società Benefit, BCC, utility, PMI in percorso VSME. Si produce ogni anno tra febbraio e aprile. Referenza: acquevenete più la relazione d'impatto di Kora stessa.</p>
-    </div>
-    <div class="seg">
-      <div><div class="pct">20%</div><h3>Manifattura su trigger</h3></div>
-      <p>Il core storico. Basta prospecting a freddo: solo segnali. Fiera tra 5 mesi, anniversario, nuova sede, passaggio generazionale, bando vinto, nuovo marketing manager.</p>
-    </div>
-    <div class="seg">
-      <div><div class="pct">10%</div><h3>Vino</h3></div>
-      <p>Verticale nuovo. Senza referenza si crea prima la referenza.</p>
-    </div>
-  </div>
-  <p class="quote">Progettiamo i documenti e gli spazi con cui un'azienda del Nordest si presenta a chi conta: soci, banche, fiere, territorio.</p>
-</div></section>
-
-<section id="icp"><div class="wrap">
-  <div class="eyebrow">03 · ICP</div>
-  <h2>Chi, quanti, chi firma.</h2>
-  <p>Tier 1 è il reporting. Ogni segmento ha un elenco pubblico da cui partire, un decisore riconoscibile e un ticket annuale che si rinnova.</p>
-  <div class="tblwrap"><table>
-    <thead><tr><th>Segmento</th><th>Bacino VE+FVG</th><th>Chi decide</th><th>Ticket / anno</th><th>Lista</th></tr></thead>
-    <tbody>
-      <tr><td><b>Gestori idrici Viveracqua</b></td><td class="mono">12</td><td>Resp. comunicazione, DG</td><td><span class="ticket">25–50k</span></td><td>viveracqua.it, soci</td></tr>
-      <tr><td><b>Multiutility, igiene ambientale, TPL, ATER, bonifica</b></td><td class="mono">40–60</td><td>Ufficio comunicazione, DG</td><td><span class="ticket">20–40k</span></td><td>siti regionali, ARERA, ANBI</td></tr>
-      <tr><td><b>BCC e Casse Rurali</b></td><td class="mono">15–18</td><td>Resp. marketing e soci, DG</td><td><span class="ticket">15–35k</span></td><td>albo Federcasse, Cassa Centrale, ICCREA</td></tr>
-      <tr><td><b>Società Benefit</b></td><td class="mono">400–600</td><td>Titolare, CFO</td><td><span class="ticket">8–15k</span></td><td>Registro Imprese, societabenefit.net, B Corp</td></tr>
-      <tr><td><b>PMI in percorso VSME / ESG richiesto da banca</b></td><td class="mono">via referral</td><td>CFO, titolare</td><td><span class="ticket">10–20k</span></td><td>commercialisti, consulenti ESG</td></tr>
-    </tbody>
-  </table></div>
-  <div class="filtro">
-    <b>Filtro d'oro</b>
-    <p>Si scarica il bilancio dell'anno scorso e si guardano copertina, prima pagina di numeri, indice. Se è Word impaginato o Excel incollato, è un lead caldo. Cinque minuti per azienda, manuale, vale il doppio di qualsiasi filtro Apollo. Chi non ha mai pubblicato nulla non va nel cold.</p>
-  </div>
-  <p style="margin-top:2rem"><b>Tier 2, manifattura:</b> 5-50M di fatturato, rete di agenti o rivenditori, almeno una fiera l'anno, export, al massimo un marketing manager, entro 60 minuti da Vittorio Veneto. Distretti: automazione accessi (Oderzo), ristorazione inox (Conegliano), occhialeria (Belluno), arredo e contract (Livenza), sportsystem (Montebelluna), subfornitura meccanica (Pordenone). Gli elenchi espositori di R+T, Host, MIDO, Sicam, ISPO, MECSPE sono le liste.</p>
-  <p><b>Tier 3, vino:</b> cantine 5-30M con marchio proprio, Vinitaly o ProWein, ospitalità aperta o in apertura. 40-60 cantine tra DOCG e DOC, più Asiago DOP, radicchio IGP, birrifici strutturati. Liste: albo soci dei Consorzi, catalogo Vinitaly.</p>
-  <p><b>Chi non si tocca:</b> sotto 2M, e-commerce puro, gare al ribasso, "solo logo", "solo social", startup.</p>
-</div></section>
-
-<section id="offerta"><div class="wrap">
-  <div class="eyebrow">04 · Offerta irresistibile</div>
-  <h2>Un obbligo trasformato in asset.</h2>
-  <p class="eq">Valore = <b>risultato sognato × probabilità percepita</b> ÷ <b>tempo × sforzo</b>. Si alza il numeratore con prova e garanzia, si abbassa il denominatore togliendo lavoro al cliente.</p>
-  <div class="offer">
-    <div class="stack">
-      <header><h3>Bilancio che si legge</h3><span class="badge">fisso annuale</span></header>
-      <ol>
-        <li>Progettazione editoriale e impaginato completo del documento</li>
-        <li>Sintesi "4 pagine" per soci e stampa</li>
-        <li>Versione web navigabile, non un PDF</li>
-        <li>Kit assemblea: presentazione, grafica sala, roll-up con i tre numeri chiave</li>
-        <li class="bonus">Audit gratuito del documento precedente, 10 punti concreti</li>
-        <li class="bonus">Mappatura indicatori su VSME o legge 208/2015 con il consulente del cliente</li>
-      </ol>
-      <footer>Il cliente fornisce le tabelle del commercialista. Kora produce testi, grafici, impaginato, web. Calendario fisso: kick-off gennaio, bozza metà marzo, chiuso 10 giorni prima dell'assemblea. Utility 25-50k, BCC 15-35k, SB 8-15k. Dal secondo anno −15/20%.</footer>
-    </div>
-    <div class="levers">
-      <div class="lever"><div class="k">Garanzia</div><p>Se il CdA non approva l'impaginato alla prima presentazione, la seconda versione è gratis. Se non approva la seconda, la progettazione non si paga.</p></div>
-      <div class="lever"><div class="k">Scarsità vera</div><p>Otto documenti per stagione febbraio-aprile con il team attuale. "Ne restano X." Deve essere vero.</p></div>
-      <div class="lever"><div class="k">Urgenza vera</div><p>Il bilancio 2026 si produce a febbraio-marzo 2027. Chi firma entro novembre ha calendario e prezzo garantiti. Chi firma a gennaio entra in coda.</p></div>
-      <div class="lever"><div class="k">Stessa logica per gli altri tier</div><p><b>Stand Test</b>: scheda gratuita col vostro stand accanto a tre concorrenti, prima della fiera. <b>Vino</b>: cantina pilota a costo ridotto + report fotografico "30 sale degustazione a confronto" inviato a tutte le 60 cantine target.</p></div>
-    </div>
-  </div>
-  <div class="hook"><small>L'offerta di meeting, il motivo per cui prendono la call</small>"Vi mando gratis, entro 5 giorni, un audit di due pagine del vostro bilancio 2025 con 10 cose da cambiare e una pagina ridisegnata. Se vi piace, ne parliamo. Se no, ve lo tenete."</div>
-</div></section>
-
-<section id="macchina"><div class="wrap">
-  <div class="eyebrow">05 · La macchina</div>
-  <h2>Dieci meeting al mese, canale per canale.</h2>
-  <p>Ipotesi di lavoro su liste pulite e messaggio specifico, da ricalibrare dopo il primo mese. Primi due mesi: 4-6 meeting per warm-up domini e costruzione liste.</p>
-  <div class="chart">
     <div>
-      <div class="bars">
-        <div class="bar"><span class="lbl">Email con trigger</span><div class="track"><div class="fill" style="width:70%"></div></div><span class="n">6–8</span></div>
-        <div class="bar"><span class="lbl">LinkedIn DG e resp.</span><div class="track"><div class="fill" style="width:27%"></div></div><span class="n">2–3</span></div>
-        <div class="bar"><span class="lbl">Referral partner</span><div class="track"><div class="fill alt" style="width:27%"></div></div><span class="n">2–3</span></div>
-        <div class="bar"><span class="lbl">Speech e eventi</span><div class="track"><div class="fill alt" style="width:10%"></div></div><span class="n">1</span></div>
-      </div>
-      <div class="total"><span>meeting / mese dal terzo mese</span><b>11–15</b></div>
-      <div class="total" style="border-top:0;padding-top:0"><span>400 email · 150 connessioni · 3-5 partner</span><span>tasso 1,5–2%</span></div>
-    </div>
-    <div class="infra">
-      <div><span>Domini</span><span>2 secondari, mai il principale. 3 caselle per dominio, 6 totali.</span></div>
-      <div><span>Warm-up</span><span>3 settimane su Instantly prima del primo invio.</span></div>
-      <div><span>Volume</span><span>20-25 email al giorno per casella. Bounce sopra il 3% ferma tutto.</span></div>
-      <div><span>Deliverability</span><span>SPF, DKIM, DMARC. Tracking apertura spento. Solo click e risposta. MillionVerifier prima di caricare.</span></div>
-      <div><span>Liste</span><span>150 contatti qualificati a settimana da mese 2. Una persona a metà tempo.</span></div>
-      <div><span>Risposte</span><span>Entro 2 ore lavorative, una persona sola. Audit promesso, consegnato in 5 giorni.</span></div>
+      <h3>Come funziona</h3>
+      <p>Ci date le tabelle. Facciamo il resto. Kick-off gennaio, bozza metà marzo, chiuso dieci giorni prima dell'assemblea.</p>
+      <h3 style="margin-top:1.5rem">Prezzo</h3>
+      <p>Fisso annuale. Utility 25-50k · BCC 15-35k · SB 8-15k. Dal secondo anno −15/20%.</p>
     </div>
   </div>
-  <div class="warn"><b>Prima del mese 3 va deciso chi fa il lavoro.</b>Dieci meeting con chiusura 25-30% e ticket medio 25k fanno 75-100k di venduto al mese. È più di quanto 6-9 persone producano oggi. Vendere a un team saturo è peggio che non vendere.</div>
-</div></section>
+</section>
 
-<section id="trigger"><div class="wrap">
-  <div class="eyebrow">06 · Trigger</div>
-  <h2>Non 500 aziende. Le 30 che hanno un motivo questo trimestre.</h2>
-  <div class="trig">
-    <div><b>Anniversario</b><p>30°, 50°, 70°, 100° nel 2027-28. Anno di costituzione da visura, tabella di distretto costruita una volta.</p><span class="f">annuale</span></div>
-    <div><b>Nuovo marketing manager</b><p>Cambia fornitore nei primi mesi. Sales Navigator, "cambiato lavoro negli ultimi 90 giorni".</p><span class="f">settimanale</span></div>
-    <div><b>Nuova sede o showroom</b><p>Tribuna di Treviso, Gazzettino, Qdpnews, permessi edilizi, post LinkedIn.</p><span class="f">settimanale</span></div>
-    <div><b>Fondo o acquisizione</b><p>Post-deal c'è sempre rebranding e budget nuovo. Registro Imprese, variazione soci.</p><span class="f">settimanale</span></div>
-    <div><b>Bando vinto</b><p>Graduatorie Regione Veneto e SIMEST. Via corta: il consulente che ha fatto la domanda.</p><span class="f">a graduatoria</span></div>
-    <div><b>Fiera tra 5-6 mesi</b><p>Budget stand deciso, fornitore creativo no. Elenco espositori appena pubblicato.</p><span class="f">mensile</span></div>
-    <div><b>Passaggio generazionale</b><p>Gruppo Giovani Imprenditori, nomine CdA, nuovo ruolo LinkedIn con il cognome del titolare.</p><span class="f">mensile</span></div>
+<section class="s">
+  <div class="n">Offerta</div>
+  <h2>Perché dicono <span class="g">sì</span></h2>
+  <div class="cols">
+    <div><h3>Garanzia</h3><p>Il CdA boccia la prima versione? La seconda è gratis. Boccia anche quella? La progettazione non si paga.</p></div>
+    <div><h3>Scarsità</h3><p>Otto documenti a stagione. Non uno di più. E lo diciamo.</p></div>
+    <div><h3>Urgenza</h3><p>Chi firma entro novembre ha calendario e prezzo. Chi firma a gennaio entra in coda.</p></div>
   </div>
-</div></section>
+</section>
 
-<section id="email"><div class="wrap">
-  <div class="eyebrow">07 · Sequenze</div>
-  <h2>Primo messaggio sotto 90 parole.</h2>
-  <p>Nessuna presentazione dell'agenzia nel primo touch. Un solo link o nessuno. Chiusura con una domanda a cui si risponde in una riga. Quattro touch in 18 giorni, l'ultimo chiude senza insistere.</p>
-  <div class="mails">
-    <div class="mail">
-      <div class="hd"><span>Tier 1 · Utility Viveracqua · touch 1</span><b>Oggetto: bilancio 2025 {{azienda}}</b></div>
-      <div class="bd">Buongiorno {{nome}},
-ho letto il bilancio 2025 di {{azienda}} pubblicato sul sito. Lavoriamo da tre anni con acquevenete sul bilancio d'esercizio e sulla rendicontazione di sostenibilità, quindi conosco il perimetro.
+<section class="s green">
+  <div class="n">Offerta di meeting</div>
+  <p class="quote" style="border-color:var(--ink)">"Vi mandiamo gratis, entro 5 giorni, un audit di due pagine del vostro bilancio con 10 cose da cambiare e una pagina ridisegnata. Se vi piace, ne parliamo. Se no, ve lo tenete."</p>
+  <p style="margin-top:1.5rem;font-weight:500">Costa due ore. Si fa solo dopo il filtro d'oro.</p>
+</section>
+
+<section class="s">
+  <div class="n">Offerta · gli altri tier</div>
+  <h2>Stessa <span class="g">logica</span></h2>
+  <div class="grid2">
+    <div><h3>Stand Test</h3><p>Scheda gratuita: il vostro stand accanto a tre concorrenti, cosa cambiare per la prossima fiera. Core: stand, contenuti interattivi, kit agenti. 30-80k.</p></div>
+    <div><h3>Wine experience</h3><p>Cantina pilota a costo ridotto. Report "30 sale degustazione a confronto" a tutte le 60 cantine. Poi il concept della loro sala, rendering incluso.</p></div>
+  </div>
+</section>
+
+<section class="s dark">
+  <div class="n">La macchina</div>
+  <h2>Dieci meeting<br><span class="g">al mese</span></h2>
+  <div class="bars">
+    <div class="bar"><span>Email con trigger</span><div class="track"><div class="fill" style="width:72%"></div></div><span>6-8</span></div>
+    <div class="bar"><span>LinkedIn</span><div class="track"><div class="fill" style="width:28%"></div></div><span>2-3</span></div>
+    <div class="bar"><span>Referral</span><div class="track"><div class="fill" style="width:28%"></div></div><span>2-3</span></div>
+    <div class="bar"><span>Speech</span><div class="track"><div class="fill" style="width:10%"></div></div><span>1</span></div>
+  </div>
+  <p style="margin-top:1.5rem;color:rgba(255,255,255,.6)">400 email, 150 connessioni, 3-5 partner. Tasso meeting 1,5-2%. Dal terzo mese: 11-15.</p>
+</section>
+
+<section class="s">
+  <div class="n">Infrastruttura</div>
+  <h2>Prima di <span class="g">scrivere</span></h2>
+  <ul>
+    <li><b>2 domini</b> secondari, 3 caselle ciascuno. Mai il dominio principale.</li>
+    <li><b>3 settimane</b> di warm-up su Instantly.</li>
+    <li><b>20-25 email</b> al giorno per casella. Bounce sopra 3%: stop.</li>
+    <li><b>SPF, DKIM, DMARC.</b> Tracking apertura spento.</li>
+    <li><b>Verifica</b> ogni lista prima di caricare.</li>
+  </ul>
+</section>
+
+<section class="s">
+  <div class="n">Liste</div>
+  <h2>150 contatti<br>a <span class="g">settimana</span></h2>
+  <div class="steps">
+    <div><b>1 · Perimetro</b><p>Elenco pubblico del segmento.</p></div>
+    <div><b>2 · Filtro d'oro</b><p>PDF, foto stand, foto sala. Manuale.</p></div>
+    <div><b>3 · Decisore</b><p>Sales Navigator, poi email verificata.</p></div>
+    <div><b>4 · Trigger</b><p>Il motivo di questo mese, scritto nella riga.</p></div>
+  </div>
+  <p style="margin-top:2rem;color:var(--g)">Una persona a metà tempo. Il triage lo può fare una macchina, il giudizio no.</p>
+</section>
+
+<section class="s dark">
+  <div class="n">Trigger</div>
+  <h2>Le 30 con un <span class="g">motivo</span></h2>
+  <div class="chips">
+    <span>anniversario 2027-28</span><span>nuovo marketing manager</span><span>nuova sede o showroom</span><span>fondo o acquisizione</span><span>bando vinto</span><span>fiera tra 5 mesi</span><span>passaggio generazionale</span>
+  </div>
+  <p style="margin-top:2rem;color:rgba(255,255,255,.6)">Sales Navigator, stampa locale, Registro Imprese, graduatorie, cataloghi fiera. Un'ora a settimana.</p>
+</section>
+
+<section class="s">
+  <div class="n">Messaggio</div>
+  <h2>Sotto <span class="g">90 parole</span></h2>
+  <ul>
+    <li>Niente presentazione dell'agenzia nel primo messaggio</li>
+    <li>Un link o nessuno</li>
+    <li>Un riferimento che il lettore riconosce: il suo documento, il suo stand</li>
+    <li>Una domanda a cui si risponde in una riga</li>
+    <li>Firma con cellulare. Niente loghi.</li>
+  </ul>
+</section>
+
+<section class="s">
+  <div class="n">Sequenza</div>
+  <h2>Quattro tocchi,<br><span class="g">18 giorni</span></h2>
+  <div class="steps">
+    <div><b>Giorno 0</b><p>L'offerta di audit.</p></div>
+    <div><b>Giorno 4</b><p>Il documento di riferimento, due pagine da guardare.</p></div>
+    <div><b>Giorno 10</b><p>Otto posti a stagione. Preferiamo dirlo ora.</p></div>
+    <div><b>Giorno 18</b><p>Chiudiamo senza insistere.</p></div>
+  </div>
+</section>
+
+<section class="s">
+  <div class="n">Esempio</div>
+  <div class="mail"><b>Oggetto: bilancio 2025 {{azienda}}</b>Buongiorno {{nome}},
+ho letto il bilancio 2025 di {{azienda}} pubblicato sul sito. Lavoriamo da tre anni con acquevenete su bilancio e rendicontazione di sostenibilità, quindi conosco il perimetro.
 
 Le mando, se le interessa, un audit di due pagine del vostro documento con 10 cose che cambierei e una pagina ridisegnata. Gratis, entro 5 giorni. Poi decide lei se vale una chiacchierata.
 
 Le va bene?</div>
-    </div>
-    <div class="mail">
-      <div class="hd"><span>Tier 1 · Società Benefit · touch 1</span><b>Oggetto: relazione d'impatto {{azienda}}</b></div>
-      <div class="bd">Buongiorno {{nome}},
-anche noi siamo Società Benefit e ogni anno scriviamo la relazione d'impatto. Ho letto la vostra, allegata al bilancio 2025.
+</section>
 
-Il contenuto c'è; il documento non lo fa capire a chi lo apre: banca, clienti, candidati. Le mando gratis un audit con 10 modifiche e una pagina rifatta, in 5 giorni, e poi vede lei.
+<section class="s dark">
+  <div class="n">Risposte</div>
+  <h2>Cosa <span class="g">rispondiamo</span></h2>
+  <ul>
+    <li><b>"Mandi l'audit"</b> · in 5 giorni, con una data proposta in fondo</li>
+    <li><b>"Abbiamo già un'agenzia"</b> · è un secondo parere, dieci minuti persi al massimo</li>
+    <li><b>"Non è il momento"</b> · quando? Per il bilancio: ottobre. Richiamo con data.</li>
+    <li><b>"Quanto costa"</b> · la fascia, subito. La call serve a capire dove cadete.</li>
+  </ul>
+</section>
 
-Va bene?</div>
-    </div>
-    <div class="mail">
-      <div class="hd"><span>Tier 2 · Manifattura, trigger fiera · touch 1</span><b>Oggetto: {{fiera}} {{anno}}: il vostro stand</b></div>
-      <div class="bd">Ciao {{nome}},
-a {{fiera}} {{anno_scorso}} avete esposto a poche corsie da {{concorrente}}. Ho le foto di entrambi gli stand.
+<section class="s">
+  <div class="n">LinkedIn</div>
+  <h2>Un post a <span class="g">settimana</span></h2>
+  <ul>
+    <li>Headline dei soci: "Bilanci che si leggono, stand che si ricordano"</li>
+    <li>Un confronto reale a settimana: prima/dopo, stand accanto a stand</li>
+    <li>Collegamento senza nota ai DG. Messaggio con l'audit dopo l'accettazione.</li>
+    <li>Massimo 25 richieste al giorno</li>
+  </ul>
+</section>
 
-Per Cardin abbiamo progettato stand e showroom, sono a Oderzo come voi. Se ti mando una scheda di due pagine con il vostro stand accanto a tre concorrenti e cosa cambierei per {{anno}}, la leggi? È gratis e non ti chiedo niente.</div>
-    </div>
-    <div class="mail">
-      <div class="hd"><span>Tier 1 · touch 3, +10 giorni</span><b>Oggetto: stagione bilanci 2027</b></div>
-      <div class="bd">{{nome}}, per la stagione febbraio-aprile 2027 seguiamo al massimo 8 documenti. Preferisco dirlo ora che a gennaio. Se {{azienda}} vuole valutare, l'audit gratuito resta l'unico passaggio prima di parlare di numeri.</div>
-    </div>
+<section class="s">
+  <div class="n">Referral</div>
+  <h2>Tre accordi valgono<br>sei mesi di <span class="g">post</span></h2>
+  <ul>
+    <li><b>Consulenti bandi</b> · sanno chi ha appena preso il contributo · 10% sul primo progetto</li>
+    <li><b>Commercialisti</b> · sanno chi deve fare la relazione d'impatto · audit co-branded</li>
+    <li><b>Consulenti ESG</b> · loro i dati, noi il documento · fee incrociata</li>
+    <li><b>Allestitori e architetti</b> · loro la struttura, noi i contenuti</li>
+    <li><b>Giovani Imprenditori</b> · i passaggi generazionali · un intervento l'anno</li>
+  </ul>
+</section>
+
+<section class="s dark">
+  <div class="n">Misura</div>
+  <h2>Cosa <span class="g">contiamo</span></h2>
+  <div class="chips">
+    <span>contatti qualificati / settimana</span><span>risposte per segmento</span><span>audit promessi / consegnati</span><span>meeting fissati</span><span>meeting tenuti</span><span>proposte</span><span>pipeline</span>
   </div>
-  <div class="rules">
-    <div><b>"Mandi pure l'audit"</b>Entro 5 giorni, con una sola proposta di data in fondo. Audit→meeting sopra il 50%, altrimenti l'audit è troppo generico.</div>
-    <div><b>"Abbiamo già un'agenzia"</b>"L'audit è un secondo parere. Se conferma che state bene, ha perso 10 minuti."</div>
-    <div><b>"Non è il momento"</b>Si chiede quando. Per il bilancio si sa: ottobre-novembre. Richiamo con data.</div>
-    <div><b>"Quanto costa"</b>Si dà la fascia, non si nasconde. "Tra 15 e 35k l'anno, scende dal secondo. La call serve a capire dove cadete."</div>
-  </div>
-</div></section>
+  <p class="lead" style="margin-top:2rem">Sotto il 5% di risposta su 100 invii: si cambia messaggio, non si aumenta la lista.</p>
+</section>
 
-<section id="referral"><div class="wrap">
-  <div class="eyebrow">08 · Referral</div>
-  <h2>Tre accordi valgono più di sei mesi di post.</h2>
-  <div class="ref">
-    <div><b>Consulenti bandi</b><p>Sanno prima di tutti chi ha ottenuto contributo per fiere, sito, materiali.</p><p>10% sul primo progetto, citati come partner in proposta.</p></div>
-    <div><b>Commercialisti e revisori</b><p>Sanno chi deve fare la relazione d'impatto e non sa a chi darla.</p><p>Audit gratuito co-branded, inviato ai loro clienti a loro nome.</p></div>
-    <div><b>Consulenti ESG e certificatori</b><p>Chi sta facendo il percorso VSME o Equalitas avrà un documento da pubblicare.</p><p>Loro dati e metodo, Kora documento e comunicazione. Fee incrociata.</p></div>
-    <div><b>Architetti e allestitori</b><p>Chi sta costruendo uno stand o uno showroom.</p><p>Loro struttura, Kora contenuti e grafica. Segnalazione reciproca.</p></div>
-    <div><b>Giovani Imprenditori</b><p>I passaggi generazionali in corso, cioè i rebranding di domani.</p><p>Un intervento l'anno: "come si presenta la seconda generazione".</p></div>
+<section class="s">
+  <div class="n">Strumenti e ruoli</div>
+  <h2>Chi fa <span class="g">cosa</span></h2>
+  <div class="grid2">
+    <ul>
+      <li><b>Instantly</b> · sequenze, caselle, inbox</li>
+      <li><b>Sales Navigator</b> · decisori e trigger</li>
+      <li><b>Apollo o Lusha</b> · email</li>
+      <li><b>MillionVerifier</b> · verifica</li>
+      <li><b>400-600 €</b> al mese, tutto compreso</li>
+    </ul>
+    <ul>
+      <li><b>Liste e trigger</b> · una persona, 2 giorni a settimana</li>
+      <li><b>Risposte e audit</b> · una persona sola, entro 2 ore</li>
+      <li><b>Meeting</b> · un socio</li>
+      <li><b>Produzione</b> · da decidere prima del mese 3</li>
+    </ul>
   </div>
-  <p class="script">"Lavoro con aziende che hanno vinto bandi per fiere e materiali e devono spenderli bene entro la rendicontazione. Tu sai prima di me chi ha appena ottenuto il contributo. Se me li presenti, ti riconosco il 10% sul primo progetto e ti metto nella proposta come partner. Ti va che ci vediamo mezz'ora?"</p>
-</div></section>
+</section>
 
-<section id="piano"><div class="wrap">
-  <div class="eyebrow">09 · Piano</div>
-  <h2>Novanta giorni.</h2>
-  <div class="tl">
-    <div><span class="w">Settimane 1–2</span><b>Fondamenta</b><ul><li>Domini e caselle in warm-up</li><li>Tre pagine offerta sul sito + pagina audit con form</li><li>Template audit 2 pagine</li><li>Lista Viveracqua, BCC, 100 SB col filtro d'oro</li><li>Primi 3 consulenti bandi contattati</li></ul></div>
-    <div><span class="w">Settimane 3–4</span><b>Tier 1 parte</b><ul><li>100 contatti a settimana via email</li><li>LinkedIn sui DG</li><li>Primo post con confronto reale</li><li>Scelta cantina pilota</li></ul></div>
-    <div><span class="w">Settimane 5–8</span><b>Tier 2 e misura</b><ul><li>Fiere primavera 2027: MIDO, MECSPE, Vinitaly, Salone</li><li>Tabella anniversari 2027</li><li>Primi audit consegnati</li><li>Taglio varianti sotto 3% di risposta</li></ul></div>
-    <div><span class="w">Settimane 9–12</span><b>Ricorrente</b><ul><li>Report sale degustazione inviato</li><li>BCC a regime</li><li>Primi pluriennali Tier 1 per la stagione 2027</li><li>Decisione capacità produttiva</li></ul></div>
+<section class="s">
+  <div class="n">Piano</div>
+  <h2>Novanta <span class="g">giorni</span></h2>
+  <div class="steps">
+    <div><b>Settimane 1-2</b><p>Domini in warm-up. Tre pagine offerta. Template audit. Liste Tier 1. Tre consulenti bandi.</p></div>
+    <div><b>Settimane 3-4</b><p>Parte Tier 1. LinkedIn sui DG. Cantina pilota scelta.</p></div>
+    <div><b>Settimane 5-8</b><p>Parte Tier 2 sulle fiere di primavera. Primi audit consegnati. Si tagliano le varianti deboli.</p></div>
+    <div><b>Settimane 9-12</b><p>Report cantine inviato. Primi pluriennali Tier 1. Decisione sulla produzione.</p></div>
   </div>
-  <div class="kpi">
-    <span>contatti qualificati / sett.</span><span>tasso risposta per segmento</span><span>audit promessi / consegnati</span><span>meeting fissati</span><span>meeting tenuti</span><span>proposte inviate</span><span>valore pipeline</span>
-  </div>
-  <p style="margin-top:1.5rem"><b>Bersaglio fine trimestre:</b> 10 meeting nel mese 3, 3 contratti Tier 1 firmati per la stagione 2027.</p>
-</div></section>
+  <p class="lead" style="margin-top:2rem">Fine trimestre: 10 meeting nel mese, 3 contratti Tier 1 per la stagione 2027.</p>
+</section>
 
-<section><div class="wrap">
-  <div class="eyebrow">10 · Prima di partire</div>
-  <div class="no">
-    <div>
-      <h3>Cosa non fare</h3>
-      <ol>
-        <li>Email che iniziano con "Kora è un'agenzia di comunicazione integrata".</li>
-        <li>Promettere l'audit senza la capacità di consegnarlo in 5 giorni.</li>
-        <li>Mischiare i tre messaggi sulla stessa casella: un dominio per verticale.</li>
-        <li>Inseguire chi risponde "solo logo".</li>
-        <li>Scalare il volume prima che la risposta superi il 5% su 100 invii.</li>
-      </ol>
-    </div>
-    <div>
-      <h3>Da chiedere a Kora</h3>
-      <ol>
-        <li>Margine reale per tipo di progetto.</li>
-        <li>Quanti bilanci in parallelo tra febbraio e aprile senza assumere.</li>
-        <li>acquevenete e Banca Prealpi si possono citare per nome e mostrare?</li>
-        <li>Chi risponde alle email e chi fa gli audit: una persona, tempo protetto.</li>
-        <li>Budget strumenti: 400-600 € al mese.</li>
-      </ol>
-    </div>
-  </div>
-</div></section>
+<section class="s green">
+  <div class="n">Prima di salpare</div>
+  <h2>Da decidere<br>insieme</h2>
+  <ul>
+    <li>Margine reale per tipo di progetto</li>
+    <li>Quanti bilanci in parallelo tra febbraio e aprile</li>
+    <li>acquevenete e Banca Prealpi: si possono citare e mostrare?</li>
+    <li>Chi risponde e chi fa gli audit</li>
+    <li>Chi produce, se i meeting arrivano</li>
+  </ul>
+</section>
 
-<footer class="end"><div class="wrap">
-  <span>Kora Comunicazione · strategia outbound v1 · 18.09.2026</span>
-  <span>Nota: bando internazionalizzazione Veneto (gen 2026) e SamuExpo (feb 2026) sono passati, cercare le edizioni successive.</span>
-</div></footer>
+<section class="s dark">
+  <img class="logo" src="kora-logo.png" alt="Kora Comunicazione">
+  <h1 style="margin-top:2rem">Partiamo<span class="g">.</span></h1>
+  <div class="foot"><span>Kora Comunicazione Società Benefit</span><span>Vittorio Veneto</span></div>
+</section>
 
+</div>
 <script>
 (function(){
-  var bar=document.getElementById('bar');
-  function upd(){var h=document.documentElement;var p=h.scrollTop/(h.scrollHeight-h.clientHeight);bar.style.width=(p*100)+'%';}
-  addEventListener('scroll',upd,{passive:true});upd();
+  var deck=document.getElementById('deck'),slides=[].slice.call(deck.querySelectorAll('.s')),pb=document.getElementById('pb'),ctr=document.getElementById('ctr');
+  function cur(){return Math.round(deck.scrollTop/deck.clientHeight)}
+  function upd(){var i=cur();pb.style.width=((i+1)/slides.length*100)+'%';ctr.textContent=(i+1)+' / '+slides.length}
+  deck.addEventListener('scroll',upd,{passive:true});upd();
+  addEventListener('keydown',function(e){
+    var i=cur(),n=null;
+    if(e.key==='ArrowDown'||e.key==='ArrowRight'||e.key===' '||e.key==='PageDown')n=Math.min(i+1,slides.length-1);
+    if(e.key==='ArrowUp'||e.key==='ArrowLeft'||e.key==='PageUp')n=Math.max(i-1,0);
+    if(e.key==='Home')n=0;if(e.key==='End')n=slides.length-1;
+    if(n!==null){e.preventDefault();slides[n].scrollIntoView()}
+  });
 })();
 </script>
 </body>
